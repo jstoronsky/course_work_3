@@ -3,6 +3,9 @@ from datetime import datetime
 
 
 def last_five(jsnlist="/home/jstoronsky/course_work_3/operations.json"):
+    """
+    Получаем список словарей с нужным срезом и сортировкой по дате
+    """
     json_list = open(jsnlist, encoding="utf-8")
     json_list_ = json_list.read()
     python_list = json.loads(json_list_)
@@ -15,6 +18,9 @@ def last_five(jsnlist="/home/jstoronsky/course_work_3/operations.json"):
 
 
 def edited_list_(last_executed):
+    """
+    преобразуем список из предыдущей функции в нужный нам формат
+    """
     edited_list = []
     for data in last_executed:
         date_formatted = datetime.fromisoformat(data["date"]).date().strftime("%d.%m.%Y")
@@ -43,6 +49,9 @@ def edited_list_(last_executed):
 
 
 def eventual_print(edited_list):
+    """
+    конечный вывод
+    """
     for operation in edited_list:
         print(operation)
 
