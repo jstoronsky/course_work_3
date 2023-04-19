@@ -44,6 +44,7 @@ def account_to_account(last_executed):
                                 f'{data["operationAmount"]["currency"]["name"]}\n'}])
     return account_to_account_
 
+
 def card_to_account(last_executed):
     """
     функция обрабатывает и создаёт список словарей по принципу перевода с карты на счёт
