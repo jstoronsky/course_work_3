@@ -1,7 +1,9 @@
 import json
-def last_five(jsnlist="/home/jstoronsky/course_work_3/operations.json"):
+
+
+def last_five(jsnlist="../operations.json"):
     """
-    Получаем список словарей с нужным срезом и сортировкой по дате
+    Получаем список словарей с нужным срезом и с выполенными операциями
     """
     json_list = open(jsnlist, encoding="utf-8")
     json_list_ = json_list.read()
@@ -14,6 +16,7 @@ def last_five(jsnlist="/home/jstoronsky/course_work_3/operations.json"):
 
 def if_there_is_no_from_(last_executed):
     """
+    функция обрабатывает и создаёт список словарей по принципу односторонней банковской операции"
     """
     if_there_is_no_from = []
     for data in last_executed:
@@ -26,6 +29,9 @@ def if_there_is_no_from_(last_executed):
 
 
 def account_to_account(last_executed):
+    """
+    функция обрабатывает и создаёт список словарей по принципу перевода со счёта на счёт
+    """
     account_to_account_ = []
     for data in last_executed:
         if "from" in data.keys():
@@ -39,11 +45,13 @@ def account_to_account(last_executed):
     return account_to_account_
 
 def card_to_account(last_executed):
+    """
+    функция обрабатывает и создаёт список словарей по принципу перевода с карты на счёт
+    """
     card_to_account_ = []
     for data in last_executed:
         if "from" in data.keys():
             cards_from = data["from"].split(" ")
-            cards_from_ = cards_from[1].replace(cards_from[1][6:-4], "******")
             cards_to = data["to"].split(" ")
             if len(cards_from[1]) == 16 and len(cards_to[1]) > 16:
                 cards_from_ = cards_from[1].replace(cards_from[1][6:-4], "******")
